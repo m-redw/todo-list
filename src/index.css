@@ -39,8 +39,9 @@ body {
 
 .content-container {
     height: 95%;
-    overflow: auto;
     position: relative;
+    overflow: auto;
+    scrollbar-width: thin;
 }
 
 h1 {
