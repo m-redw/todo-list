@@ -42,6 +42,7 @@ body, p {
     position: relative;
     overflow: auto;
     scrollbar-width: thin;
+    scrollbar-color: #cfcfcf white;
 }
 
 h1 {
