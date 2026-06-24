@@ -98,6 +98,10 @@ h2 {
     border-radius: 8px;
 }
 
+.edit-todo:hover {
+    background-color: #cfcfcf;
+}
+
 .delete-todo {
     position: absolute;
     top: -15px;
@@ -107,6 +111,10 @@ h2 {
     border: 2px solid #ff5656;
     border-radius: 100%;
     color: rgb(168, 0, 0);
+}
+
+.delete-todo:hover {
+    background-color: #ff9090;
 }
 
 .checkbox {
