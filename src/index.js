@@ -1,5 +1,5 @@
 import "./index.css";
-import { createTodo } from "./todo.js";
+import { createTodo } from "./todoCreator.js";
 import { createHeader } from "./headerCreator.js";
 
 const editTodo = document.querySelector('#edit-todo');
