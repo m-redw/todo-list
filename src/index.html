@@ -6,6 +6,17 @@
     <title>Todo List</title>
 </head>
 <body>
+    <dialog id="edit-todo">
+        <input type="text" placeholder="Title" required>
+        <textarea placeholder="Insert description"></textarea>
+        <input type="date">
+        <div>
+            <button class="checkbox"></button>
+            <span>Complete</span>
+        </div>
+        <button class="dialog-exit">Save and Exit</button>
+    </dialog>
+
     <button class="add-project">+</button>
     <div class="project-list">
         <div class="project">
@@ -20,66 +31,9 @@
                         <span class="title">Todooooooooooooooooooooooo 1</span>
                         <span class="desc">[...]</span>
                     </div>
-                    <p class="due">Due in 3 days</p>
-                </div>
-                <div class="todo">
-                    <div>
-                        <button class="checkbox"></button>
-                        <span class="title">Todo 2</span>
-                        <span class="desc">[...]</span>
-                    </div>
-                    <p class="due">Due in 3 days</p>
-                </div>
-                <div class="todo">
-                    <div>
-                        <button class="checkbox"></button>
-                        <span class="title">Todo 3</span>
-                        <span class="desc">[...]</span>
-                    </div>
-                    <p class="due">Due in 3 days</p>
-                </div>
-                <div class="todo">
-                    <div>
-                        <button class="checkbox"></button>
-                        <span class="title">Todo 4</span>
-                        <span class="desc">[...]</span>
-                    </div>
-                    <p class="due">Due in 3 days</p>
-                </div>
-
-                <h2>Heading 2</h2>
-
-                <div class="todo">
-                    <div>
-                        <button class="checkbox"></button>
-                        <span class="title">Todooooooooooooooooooooooo 1</span>
-                        <span class="desc">[...]</span>
-                    </div>
-                    <p class="due">Due in 3 days</p>
-                </div>
-                <div class="todo">
-                    <div>
-                        <button class="checkbox"></button>
-                        <span class="title">Todo 2</span>
-                        <span class="desc">[...]</span>
-                    </div>
-                    <p class="due">Due in 3 days</p>
-                </div>
-                <div class="todo">
-                    <div>
-                        <button class="checkbox"></button>
-                        <span class="title">Todo 3</span>
-                        <span class="desc">[...]</span>
-                    </div>
-                    <p class="due">Due in 3 days</p>
-                </div>
-                <div class="todo">
-                    <div>
-                        <button class="checkbox"></button>
-                        <span class="title">Todo 4</span>
-                        <span class="desc">[...]</span>
-                    </div>
-                    <p class="due">Due in 3 days</p>
+                    <p class="due">Due in 3 days</p>                        
+                    <button class="edit-todo">Edit</button>
+                    <button class="delete-todo">x</button>
                 </div>
             </div>
 

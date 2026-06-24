@@ -48,6 +48,7 @@ body, p {
 h1 {
     position: sticky;
     top: 0;
+    z-index: 1;
 
     margin: 20px 0;
 
@@ -69,7 +70,11 @@ h2 {
     /* Adjust these in js */
     /* if no border color, height should be 65px */
     height: 75px; 
-    border-top: 10px solid #8bac8b;
+    border-top: 10px solid #8bac8b; 
+
+    width: 260px;
+
+    position: relative;
 }
 
 .todo div {
@@ -78,6 +83,28 @@ h2 {
 
     height: 40px;
     width: 250px;
+}
+
+.edit-todo {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 40px;
+    height: 20px;
+
+    border: 2px solid #999999;
+    border-radius: 8px;
+}
+
+.delete-todo {
+    position: absolute;
+    top: -15px;
+    right: -5px;
+
+    background-color: #ffbaba;
+    border: 2px solid #ff5656;
+    border-radius: 100%;
+    color: rgb(168, 0, 0);
 }
 
 .checkbox {
@@ -122,4 +149,10 @@ h2 {
 
     height: 30px;
     width: 276px;
+}
+
+dialog:open {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
