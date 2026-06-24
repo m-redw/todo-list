@@ -29,6 +29,10 @@ body, p {
     text-align: center;
 }
 
+.add-project:hover {
+    background-color: #dbdbdb;
+}
+
 .project {
     width: 300px;
     height: 95vh;
