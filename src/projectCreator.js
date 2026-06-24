@@ -16,12 +16,15 @@ export function createProject(title) {
 
     const contentContainer = createContentContainer(project);
     createProjectTitle(title, contentContainer);
-    createAddButton(contentContainer);
 
+    createAddButton(project);
     projectList.appendChild(project);
 
     return { contentContainer };
 }
+
+
+
 
 function createContentContainer(parent) {
     const container = document.createElement('div');
