@@ -1,4 +1,5 @@
 import "./index.css";
+import { createTodo } from "./todo.js";
 
 const editTodo = document.querySelector('#edit-todo');
 const dialogExitButton = document.querySelector('.dialog-exit');
@@ -15,3 +16,8 @@ todoDos.forEach((todo) => {
 dialogExitButton.addEventListener('click', ()=>{
     editTodo.close();
 });
+
+
+const project1 = document.querySelector('.content-container');
+createTodo('test1', 'ee', 'Due in 2 days', project1)
+createTodo('test2', '', '', project1)
