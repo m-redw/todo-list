@@ -5,7 +5,7 @@ import { createProject } from "./projectCreator.js";
 
 let projects = [];
 
-// Make dialog exitable
+// Make edit-todo dialog exitable
 const editTodo = document.querySelector('#edit-todo');
 const todoDialogExitButton = document.querySelector('.todo-dialog-exit');
 

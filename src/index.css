@@ -173,9 +173,17 @@ dialog:open {
     justify-content: space-between;
     gap: 20px;
 
-    width: 200px;
-    height: 160px;
 
     border: 2px solid black;
     border-radius: 16px;
+}
+
+#create-project {
+    width: 200px;
+    height: 160px;
+}
+
+#edit-todo {
+    width: 200px;
+    height: 300px;
 }
