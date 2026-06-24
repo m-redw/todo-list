@@ -8,6 +8,7 @@
 //     <button class="edit-todo">Edit</button>
 //     <button class="delete-todo">x</button>
 // </div>
+const editTodo = document.querySelector('#edit-todo');
 
 export function createTodo(title, desc, due, parent) {
     const todoContainer = document.createElement('div');
@@ -81,6 +82,11 @@ function createEditButton() {
     const editButton = document.createElement('button');
     editButton.classList.add('edit-todo');
     editButton.textContent = 'Edit';
+
+    editButton.addEventListener('click', ()=>{
+        editTodo.showModal();
+    });
+
     return editButton;
 }
 
