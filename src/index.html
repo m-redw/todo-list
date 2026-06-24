@@ -6,6 +6,12 @@
     <title>Todo List</title>
 </head>
 <body>
+    <dialog id="create-project">
+        <input type="text" placeholder="Title" required id="project-title">
+        <p class="warning"></p>
+        <button class="project-create-button">Create</button>
+    </dialog>
+
     <dialog id="edit-todo">
         <input type="text" placeholder="Title" required>
         <textarea placeholder="Insert description"></textarea>
@@ -14,7 +20,7 @@
             <button class="checkbox"></button>
             <span>Complete</span>
         </div>
-        <button class="dialog-exit">Save and Exit</button>
+        <button class="todo-dialog-exit">Save and Exit</button>
     </dialog>
 
     <button class="add-project">+</button>
