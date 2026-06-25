@@ -6,34 +6,22 @@
     <title>Todo List</title>
 </head>
 <body>
-    <dialog id="create-project">
-        <input type="text" placeholder="Title" required id="project-title">
-        <p class="warning"></p>
-        <button class="project-create-button">Create</button>
-    </dialog>
-
-    <dialog id="edit-todo">
-        <input type="text" placeholder="Title" required>
-        <textarea placeholder="Description"></textarea>
-        <input type="date">
-        <div>
-            <button class="checkbox"></button>
-            <span>Complete</span>
-        </div>
-        <button class="todo-dialog-exit">Save and Exit</button>
-    </dialog>
-
     <button class="add-project">+</button>
     <div class="project-list">
+
         <div class="project">
-            <div class="content-container">
-                <h1>Project 1</h1>
+            <h1>Project 1</h1>
 
-                <h2>Heading 1</h2>
+            <div class="todo">
+                <h3>Title</h3>
+                <p>description</p>
+                <p>Due: Tomorrow</p>
+                <p>HIGH</p>
+                <button class="complete-button"></button>
+                <button class="add-todo">+</button>
             </div>
-
-            <button class="add-more">+</button>
         </div>
+
     </div>
 </body>
 </html>
