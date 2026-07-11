@@ -1,4 +1,7 @@
 .project {
+    /* Flex container will compress this item so simply don't shrink */
+    flex-shrink: 0; 
+    
     border: 2px solid #636363;
     border-radius: 10px;
 
