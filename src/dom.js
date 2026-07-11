@@ -1,3 +1,5 @@
+import makeTodo from "./todoObj.js";
+
 const projectListDOM = document.querySelector('.project-list');
 
 export function createProjectDOM(title) {
