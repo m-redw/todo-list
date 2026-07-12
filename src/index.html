@@ -27,6 +27,20 @@
         <p>Press [ESC] to cancel.</p>
     </dialog>
 
+    <dialog class="edit-todo">
+        <h1>Edit Todo</h1>
+        <input id="edit-title" type="text" required>
+        <textarea id="edit-desc" placeholder="Description (optional)"></textarea>
+        <input type="date" id="edit-dueDate">
+        <select id="edit-priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        <button class="todo-edit">Edit</button>
+        <p>Press [ESC] to cancel.</p>
+    </dialog>
+
     <button class="add-project">+</button>
     <div class="project-list">
 
