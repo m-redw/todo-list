@@ -72,26 +72,38 @@ export function createTodoDOM(todoObj) {
 
 
 addProjectButton.addEventListener('click', ()=>{
-    projectDialogTitle.value = '';
     projectDialog.showModal();
 });
 
 createProjectButton.addEventListener('click', ()=>{
+    if (projectDialogTitle.value.length < 1) {
+        alert('Project title required! (At least 1 char)');
+        return;
+    }
+
     projectDialog.close();
     const title = projectDialogTitle.value;
     createProjectDOM(title);
+    projectDialogTitle.value = '';
 });
 
 createTodoButton.addEventListener('click', ()=>{
     const todoTitle = document.querySelector('#todo-title').value;
+    if (todoTitle.length < 1) {
+        alert('Todo title required! (At least 1 char)');
+        return;
+    }
     const todoDesc = document.querySelector('#todo-desc').value;
     const todoDueDate = document.querySelector('#todo-dueDate').value;
     const todoPriority = document.querySelector('#todo-priority').value;
     
+
     const newTodo = makeTodo(todoTitle, todoDesc, todoDueDate, todoPriority);
     createTodoDOM(newTodo);
 
     todoDialog.close(); 
+
+    // Only resets after successfully creating new todo
     document.querySelector('#todo-title').value = '';
     document.querySelector('#todo-desc').value = '';
     document.querySelector('#todo-dueDate').value = '';
