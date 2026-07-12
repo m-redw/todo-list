@@ -9,7 +9,7 @@ const projectDialog = document.querySelector('.new-project');
 const todoDialog = document.querySelector('.new-todo');
 const editDialog = document.querySelector('.edit-todo')
 
-const projectDialogTitle = document.querySelector('.project-title');
+const projectDialogTitle = document.querySelector('#project-title');
 const projectListDOM = document.querySelector('.project-list');
 
 const editTitle = document.querySelector('#edit-title');

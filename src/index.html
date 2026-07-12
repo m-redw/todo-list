@@ -8,16 +8,23 @@
 <body>
     <dialog class="new-project">
         <h1>New Project</h1>
-        <input class="project-title" type="text" required>
+        <p>* for REQUIRED</p>
+        <label for="project-title">Title * (at least 1 char)</label>
+        <input id="project-title" type="text" required>
         <button class="project-create">Create</button>
         <p>Press [ESC] to cancel.</p>
     </dialog>
 
     <dialog class="new-todo">
         <h1>New Todo</h1>
+        <p>* for REQUIRED</p>
+        <label for="todo-title">Title * (at least 1 char)</label>
         <input id="todo-title" type="text" required>
-        <textarea id="todo-desc" placeholder="Description (optional)"></textarea>
+        <label for="todo-desc">Description</label>
+        <textarea id="todo-desc"></textarea>
+        <label for="todo-dueDate">Due Date</label>
         <input type="date" id="todo-dueDate">
+        <label for="todo-priority">Priority</label>
         <select id="todo-priority">
             <option value="low">Low</option>
             <option value="medium">Medium</option>
@@ -29,9 +36,13 @@
 
     <dialog class="edit-todo">
         <h1>Edit Todo</h1>
+        <label for="edit-title">Title * (at least 1 char)</label>
         <input id="edit-title" type="text" required>
+        <label for="edit-desc">Description</label>
         <textarea id="edit-desc" placeholder="Description (optional)"></textarea>
+        <label for="edit-dueDate">Due Date</label>
         <input type="date" id="edit-dueDate">
+        <label for="edit-priority">Priority</label>
         <select id="edit-priority">
             <option value="low">Low</option>
             <option value="medium">Medium</option>
