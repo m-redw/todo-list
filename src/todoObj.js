@@ -8,6 +8,6 @@ class todo {
 }
 
 export default function makeTodo(title, desc, dueDate, priority) {
-    const newTodo = new todo(title, desc, desc, priority);
+    const newTodo = new todo(title, desc, dueDate, priority);
     return newTodo;
 }

@@ -126,8 +126,6 @@ createTodoButton.addEventListener('click', ()=>{
     const newTodo = makeTodo(todoTitle, todoDesc, todoDueDate, todoPriority);
     createTodoDOM(newTodo);
     projects[whichProject-1].push(newTodo);
-    console.log(projects);
-    
 
     todoDialog.close(); 
 
