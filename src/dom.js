@@ -45,6 +45,9 @@ export function createTodoDOM(todoObj) {
     const completeButton = document.createElement('button');
     completeButton.type = 'button';
     completeButton.classList.add('todo-complete');
+    completeButton.addEventListener('click', ()=>{
+        todo.remove();
+    });
 
     const todoTitle = document.createElement('h3');
     todoTitle.classList.add('todo-title');
