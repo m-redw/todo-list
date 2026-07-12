@@ -42,6 +42,10 @@ createTodoButton.addEventListener('click', ()=>{
     createTodoDOM(newTodo);
 
     todoDialog.close(); 
+    document.querySelector('#todo-title').value = '';
+    document.querySelector('#todo-desc').value = '';
+    document.querySelector('#todo-dueDate').value = '';
+    document.querySelector('#todo-priority').value = 'low';
 });
 
 
