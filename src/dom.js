@@ -24,15 +24,46 @@ let projects = [];
 
 let currentTodo;
 
+const deletedTodo = new CustomEvent('deletedTodo');
+
 export function createProjectDOM(title) {
-    const thisProject = ++projectCount;
+    let thisProject = ++projectCount;
     projects.push([]);
 
     const project = document.createElement('div');
     project.classList.add('project', `_${thisProject}`);
 
+    function deleteTodo() {
+        if (thisProject != 1) {
+            --thisProject;
+            project.classList.remove(...project.classList);
+            project.classList.add('project', `_${thisProject}`);
+        }
+    }
+    document.addEventListener('deletedTodo', deleteTodo);
+
     const h1 = document.createElement('h1');
     h1.textContent = title;
+
+    const deleteProjectButton = document.createElement('button');
+    deleteProjectButton.type = 'button';
+    deleteProjectButton.classList.add('project-delete');
+    deleteProjectButton.textContent = 'x';
+
+    deleteProjectButton.addEventListener('click', ()=>{
+        const shouldDelete = confirm(`Delete "${title}"? Press OK to DELETE. Cancel otherwise.`);
+        if (shouldDelete) {
+           projectCount--;
+           
+           // Memory cleanup (2 lines below specifically)
+           document.removeEventListener('deletedTodo', deleteTodo);
+           projects.splice(thisProject-1, 1);
+           
+           document.dispatchEvent(deletedTodo);
+
+           project.remove();
+        }
+    })
 
     const todoList = document.createElement('div');
     todoList.classList.add('todo-list');
@@ -41,12 +72,13 @@ export function createProjectDOM(title) {
     addTodoButton.type = 'button';
     addTodoButton.textContent = '+';
     addTodoButton.classList.add('add-todo');
+
     addTodoButton.addEventListener('click', ()=>{
         todoDialog.showModal();
         whichProject = thisProject;
     });
 
-    project.append(h1, todoList, addTodoButton);
+    project.append(h1, deleteProjectButton, todoList, addTodoButton);
     projectListDOM.append(project);
 }
 

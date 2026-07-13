@@ -109,3 +109,19 @@ h1 {
 .add-todo:hover {
     background-color: #bdbdbd;
 }
+
+.project-delete {
+    position: absolute;
+    right: 10px;
+
+    width: 26px;
+    height: 26px;
+    border: 2px solid #ff3434;
+    border-radius: 100%;
+    background-color: #ffbdbd;
+    color: #ff3434;
+}
+
+.project-delete:hover {
+    background-color: #ff7c7c;
+}
