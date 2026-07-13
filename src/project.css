@@ -47,7 +47,12 @@ h1 {
     height: 20px;
     border: 2px solid gray;
     border-radius: 100%;
-    background-color: white
+    background-color: white;
+}
+
+.todo-checkmark {
+    position: relative;
+    left: -3px;
 }
 
 .todo-complete:hover {

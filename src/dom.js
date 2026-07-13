@@ -57,9 +57,19 @@ export function createTodoDOM(todoObj) {
     const completeButton = document.createElement('button');
     completeButton.type = 'button';
     completeButton.classList.add('todo-complete');
+
+    const checkmark = document.createElement('span');
+    checkmark.classList.add('todo-checkmark');
+    completeButton.append(checkmark);
+
     completeButton.addEventListener('click', (button)=>{
         button.stopPropagation();
-        todo.remove();
+        
+        if (checkmark.textContent === '') {
+            checkmark.textContent = '✔';
+        } else {
+            checkmark.textContent = '';
+        }
     });
 
     const todoTitle = document.createElement('h3');
