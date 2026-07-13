@@ -4,6 +4,7 @@ const addProjectButton = document.querySelector('.add-project');
 const createProjectButton = document.querySelector('.project-create');
 const createTodoButton = document.querySelector('.todo-create')
 const editTodoButton = document.querySelector('.todo-edit');
+const deleteTodoButton = document.querySelector('.todo-delete');
 
 const projectDialog = document.querySelector('.new-project');
 const todoDialog = document.querySelector('.new-todo');
@@ -100,7 +101,7 @@ export function createTodoDOM(todoObj) {
         editDesc.value = todoObj.desc;
         editDueDate.value = todoObj.dueDate;
         editPriority.value = todoObj.priority;
-        currentTodo = [todoObj, todoTitle, todoDesc, todoPriority];
+        currentTodo = [todoObj, todoTitle, todoDesc, todoPriority, todo];
         editDialog.showModal();
     });
 }
@@ -180,4 +181,21 @@ editTodoButton.addEventListener('click', ()=>{
 
     console.log(projects);
     editDialog.close(); 
+});
+
+editDialog.addEventListener('close', ()=>{
+    deleteTodoButton.textContent = 'DELETE';
+});
+
+deleteTodoButton.addEventListener('click', ()=>{
+    if (deleteTodoButton.textContent === 'DELETE') {
+        deleteTodoButton.textContent = 'CLICK AGAIN';
+    } else if (deleteTodoButton.textContent === 'CLICK AGAIN') {
+        const todoObj = currentTodo[0];
+        const todoIndex = projects[whichProject-1].indexOf(todoObj);
+        const todoDisplay = currentTodo[4];
+        projects[whichProject-1].splice(todoIndex, 1);
+        todoDisplay.remove();
+        editDialog.close();
+    }
 });
