@@ -18,17 +18,16 @@ const editDesc = document.querySelector('#edit-desc');
 const editDueDate = document.querySelector('#edit-dueDate');
 const editPriority = document.querySelector('#edit-priority');
 
-let projectCount = 0;
+export let projects = [];
 let whichProject = 0;
-let projects = [];
 
 let currentTodo;
 
 const deletedTodo = new CustomEvent('deletedTodo');
 
 export function createProjectDOM(title) {
-    let thisProject = ++projectCount;
     projects.push([]);
+    let thisProject = projects.length;
 
     const project = document.createElement('div');
     project.classList.add('project', `_${thisProject}`);
@@ -53,8 +52,6 @@ export function createProjectDOM(title) {
     deleteProjectButton.addEventListener('click', ()=>{
         const shouldDelete = confirm(`Delete "${title}"? Press OK to DELETE. Cancel otherwise.`);
         if (shouldDelete) {
-           projectCount--;
-           
            // Memory cleanup (2 lines below specifically)
            document.removeEventListener('deletedTodo', deleteTodo);
            projects.splice(thisProject-1, 1);
