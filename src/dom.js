@@ -1,4 +1,6 @@
 import makeTodo from "./todoObj.js";
+import makeProject from "./projectObj.js";
+import setLS from "./localstore.js";
 
 const addProjectButton = document.querySelector('.add-project');
 const createProjectButton = document.querySelector('.project-create');
@@ -18,15 +20,19 @@ const editDesc = document.querySelector('#edit-desc');
 const editDueDate = document.querySelector('#edit-dueDate');
 const editPriority = document.querySelector('#edit-priority');
 
-export let projects = [];
+
+let projects = [];
 let whichProject = 0;
 
 let currentTodo;
 
 const deletedTodo = new CustomEvent('deletedTodo');
 
-export function createProjectDOM(title) {
-    projects.push([]);
+export function setProjects(list) {
+    projects = list;
+}
+
+export function createProjectDOM(title, projectObj) {
     let thisProject = projects.length;
 
     const project = document.createElement('div');
@@ -37,6 +43,10 @@ export function createProjectDOM(title) {
             --thisProject;
             project.classList.remove(...project.classList);
             project.classList.add('project', `_${thisProject}`);
+            
+            for (let todo of projectObj.content) {
+                todo.project--;
+            }
         }
     }
     document.addEventListener('deletedTodo', deleteTodo);
@@ -55,6 +65,7 @@ export function createProjectDOM(title) {
            // Memory cleanup (2 lines below specifically)
            document.removeEventListener('deletedTodo', deleteTodo);
            projects.splice(thisProject-1, 1);
+           setLS('projectList', projects);
            
            document.dispatchEvent(deletedTodo);
 
@@ -80,7 +91,7 @@ export function createProjectDOM(title) {
 }
 
 
-export function createTodoDOM(todoObj) {
+export function createTodoDOM(todoObj, whichParent) {
     const todo = document.createElement('div');
     todo.classList.add('todo');
 
@@ -122,7 +133,7 @@ export function createTodoDOM(todoObj) {
 
     todo.append(completeButton, todoTitle, todoDesc, todoPriority);
 
-    const todoList = document.querySelector(`.project._${whichProject} .todo-list`);
+    const todoList = document.querySelector(`.project._${whichParent} .todo-list`);
     todoList.append(todo);
 
     todo.addEventListener('click', ()=>{
@@ -131,6 +142,7 @@ export function createTodoDOM(todoObj) {
         editDueDate.value = todoObj.dueDate;
         editPriority.value = todoObj.priority;
         currentTodo = [todoObj, todoTitle, todoDesc, todoPriority, todo];
+        whichProject = todoObj.project;
         editDialog.showModal();
     });
 }
@@ -140,15 +152,31 @@ addProjectButton.addEventListener('click', ()=>{
     projectDialog.showModal();
 });
 
+//000000000000000000000000000000000000000
+export function createNewProject(title, content) {
+    const newProject = makeProject(title, content);
+    projects.push(newProject);
+    createProjectDOM(title, newProject);
+}
+
+export function createNewTodo(todoTitle, todoDesc, todoDueDate, todoPriority, whichParent) {
+    const newTodo = makeTodo(todoTitle, todoDesc, todoDueDate, todoPriority, whichParent);
+    createTodoDOM(newTodo, whichParent);
+}
+//000000000000000000000000000000000000000
+
 createProjectButton.addEventListener('click', ()=>{
-    if (projectDialogTitle.value.length < 1) {
+    const projectTitle = projectDialogTitle.value;
+    if (projectTitle.length < 1) {
         alert('Project title required! (At least 1 char)');
         return;
     }
 
+    createNewProject(projectTitle, [])
+    setLS('projectList', projects);
+
     projectDialog.close();
-    const title = projectDialogTitle.value;
-    createProjectDOM(title);
+
     projectDialogTitle.value = '';
 });
 
@@ -162,10 +190,10 @@ createTodoButton.addEventListener('click', ()=>{
     const todoDueDate = document.querySelector('#todo-dueDate').value;
     const todoPriority = document.querySelector('#todo-priority').value;
     
-
-    const newTodo = makeTodo(todoTitle, todoDesc, todoDueDate, todoPriority);
-    createTodoDOM(newTodo);
-    projects[whichProject-1].push(newTodo);
+    const newTodo = makeTodo(todoTitle, todoDesc, todoDueDate, todoPriority, whichProject);
+    createTodoDOM(newTodo, whichProject);
+    projects[whichProject-1].content.push(newTodo);
+    setLS('projectList', projects);
 
     todoDialog.close(); 
 
@@ -207,9 +235,10 @@ editTodoButton.addEventListener('click', ()=>{
     } else {
         todoPriority.textContent = todoObj.priority.toUpperCase();
     }
-
-    console.log(projects);
+    
     editDialog.close(); 
+    projects[todoObj.project - 1].content[0] = todoObj;
+    setLS('projectList', projects);
 });
 
 editDialog.addEventListener('close', ()=>{
@@ -221,10 +250,11 @@ deleteTodoButton.addEventListener('click', ()=>{
         deleteTodoButton.textContent = 'CLICK AGAIN';
     } else if (deleteTodoButton.textContent === 'CLICK AGAIN') {
         const todoObj = currentTodo[0];
-        const todoIndex = projects[whichProject-1].indexOf(todoObj);
+        const todoIndex = projects[todoObj.project-1].content.indexOf(todoObj);
         const todoDisplay = currentTodo[4];
-        projects[whichProject-1].splice(todoIndex, 1);
+        projects[whichProject-1].content.splice(todoIndex, 1);
         todoDisplay.remove();
         editDialog.close();
+        setLS('projectList', projects);
     }
 });
