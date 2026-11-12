@@ -1,18 +1,19 @@
 # todo-list
 
-A normal todo list. 
+A normal todo list.
 
-* Make projects where you can put todos in. 
-* Click the circles to check off todos. 
-* Click todos to see their full information, edit them, or delete them. 
+- Make projects where you can put todos in.
+- Click the circles to check off todos.
+- Click todos to see their full information, edit them, or delete them.
 
+## Things to watch out for
 
-**WARNING**
-This todo is not the best.
-
-Data saving is buggy. Deleting a todo could break the site (just refresh the page if it happens)
+Data saving is buggy last time I check, though that was a while ago and I haven't encountered the only bug (below) since.
+Bug?: Deleting a todo could break the site (just refresh the page if it happens)
 
 Checks aren't saved (just didn't implemenet it lol).
+
+## Closing thoughts on development
 
 There were a lot of mistakes I made early on in the development of this project. I now know the importance of VERY CAREFUL planning. Instead of just going into a project head first and figuring it out as it goes, I probably need to set a whole day to just planning before I start a project, even if I think it'll be a "small" project.
 
