@@ -54,6 +54,16 @@ label {
     font-size: 16px;
 }
 
+dialog {
+    border: 2px solid #636363;
+    border-radius: 20px;
+
+    height: 400px;
+    width: 300px;
+
+    scrollbar-width: none;
+}
+
 dialog button {
     margin: 30px 0 20px;
     width: 100px;
